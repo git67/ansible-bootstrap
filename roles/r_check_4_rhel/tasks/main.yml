@@ -1,0 +1,35 @@
+################################################
+## name: r_check_4_rhel
+##
+## function:
+## - probe os release 
+##
+## dev: heiko stein
+## mail: heiko.stein@etomer.com
+##
+## rel: 0.1
+##
+## ref:
+## - %
+##
+## changelog:
+## -
+#################################################
+---
+# tasks file for r_check_4_rhel
+# get facts
+  - block:
+    - name: "reload facts"
+      setup:
+
+    - name: "probe for rhel/centos"
+      fail:
+        msg: "{{ ansible_host }} doesn't run redhat/centos"
+      when: ('centos' not in ansible_distribution|lower and 'redhat' not in ansible_distribution|lower)
+
+    rescue:
+    - fail:
+        msg: "error: during check 4 rhel"
+
+    tags:
+    - always

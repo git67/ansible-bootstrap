@@ -1,0 +1,38 @@
+#################################################
+# name: r_probe_services
+#
+# function:
+# - look for failed services 
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+#
+# ref:
+# - %
+#
+# changelog:
+# -
+#################################################
+---
+# tasks file for r_probe_services
+  - block:
+    - name: "gather facts about service states"
+      service_facts:
+
+    - name: "check for failed systemd services"
+      shell: |
+        SVC={{ hostvars[inventory_hostname]['services'][item]['name'] }}
+        systemctl is-failed ${SVC}
+      loop: "{{ hostvars[inventory_hostname]['services'] | flatten(levels=1) }}"
+      failed_when: is_failed.stdout == "failed"
+      changed_when: false
+      register: is_failed
+
+    rescue:
+    - fail:
+        msg: "error: failed services found"
+
+    tags:
+    - probe_services

@@ -1,0 +1,17 @@
+[rhel-7-server-rpms]
+name=rhel-7-server-rpms
+baseurl="https://qdc3l7058.viola.local/repo/rhel-7-server-rpms"
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+gpgcheck = 1
+
+[rhel-7-server-extras-rpms]
+name=rhel-7-server-extras-rpms
+baseurl="https://qdc3l7058.viola.local/repo/rhel-7-server-extras-rpms"
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+gpgcheck = 1
+
+[rhel-7-server-optional-rpms]
+name=rhel-7-server-optional-rpms
+baseurl="https://qdc3l7058.viola.local/repo/rhel-7-server-optional-rpms"
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+gpgcheck = 1

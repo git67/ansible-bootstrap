@@ -1,0 +1,9 @@
+ansible-playbook p_create_ansible_client.yml  --user=root --ask-pass
+
+ansible-playbook p_create_ansible_client.yml  --user=ansible --private-key=~/.ssh/priv_ansible
+
+_ra p_base_configure_os.yml --skip-tags reboot_nodes,probe_services
+
+_ra p_base_configure_os.yml --skip-tags reboot_nodes,probe_services,always --tags configure_yum_cron
+
+python -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.using(rounds=5000).hash(getpass.getpass()))"
