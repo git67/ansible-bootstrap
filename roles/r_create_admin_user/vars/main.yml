@@ -1,28 +1,6 @@
 # vars file for r_create_admin_user
 ---
 admin_user:
-  treinsdorf:
-    name: treinsdorf
-    home_dir: /home/treinsdorf
-    group: users
-    comment: "administrativer user"
-    uid: 61002
-    gid: 100
-    sudo_file: treinsdorf
-    sudo_entry: "treinsdorf ALL=(ALL) NOPASSWD: ALL"
-    pub_key_file: "treinsdorf.pubkey"
-    password_file: "treinsdorf.pw"
-  fwoelk:
-    name: fwoelk
-    home_dir: /home/fwoelk
-    group: users
-    comment: "administrativer user"
-    uid: 61001
-    gid: 100
-    sudo_file: fwoelk
-    sudo_entry: "fwoelk ALL=(ALL) NOPASSWD: ALL"
-    pub_key_file: "fwoelk.pubkey"
-    password_file: "fwoelk.pw"
   hstein:
     name: hstein
     home_dir: /home/hstein
@@ -32,5 +10,6 @@ admin_user:
     gid: 100
     sudo_file: hstein
     sudo_entry: "hstein ALL=(ALL) NOPASSWD: ALL"
-    pub_key_file: "hstein.pubkey"
-    password_file: "hstein.pw"
+    pub_key_file: "hstein.pub.vault"
+    password_file: "hstein.pw.vault"
+noop:
