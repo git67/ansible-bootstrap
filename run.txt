@@ -7,3 +7,5 @@ _ra p_base_configure_os.yml --skip-tags reboot_nodes,probe_services
 _ra p_base_configure_os.yml --skip-tags reboot_nodes,probe_services,always --tags configure_yum_cron
 
 python -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.using(rounds=5000).hash(getpass.getpass()))"
+
+alias
