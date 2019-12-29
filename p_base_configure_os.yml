@@ -3,6 +3,10 @@
 #
 # function: 
 # - configure dns
+# - configure ntp
+# - configure ca
+# - configure repositories
+# - update os
 #
 # dev: heiko stein
 # mail: heiko.stein@etomer.com
@@ -47,6 +51,12 @@
 ################################################
   tasks:
   - block:
+    - name: "role configure /etc/hosts"
+      include_role:
+        name: r_configure_hosts_file
+      tags: 
+      - configure_hosts_file
+
     - name: "role create admin user"
       include_role:
         name: r_create_admin_user

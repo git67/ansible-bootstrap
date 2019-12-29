@@ -1,4 +1,4 @@
-search viola.local kabeldeutschland.de
-nameserver 10.32.29.18
-nameserver 10.32.29.19
-nameserver 10.32.29.20
+search {{ search_domain }}
+{% for nameserver in nameserver_list %}
+nameserver {{ nameserver }}
+{% endfor %}
