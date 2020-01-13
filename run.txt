@@ -1,6 +1,0 @@
-_ra p_base_configure_os.yml --skip-tags reboot_nodes,probe_services
-
-_ra p_base_configure_os.yml --skip-tags reboot_nodes,probe_services,always --tags configure_yum_cron
-
-alias _ra='ansible-playbook --user=ansible --private-key=~/.ssh/ansible.priv'
-alias _ri='ansible-playbook --user=root --ask-pass'
