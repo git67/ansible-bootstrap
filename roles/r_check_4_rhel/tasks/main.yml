@@ -31,6 +31,10 @@
         msg: "{{ ansible_host }} doesn't run redhat/centos"
       when: ('centos' not in ansible_distribution|lower and 'redhat' not in ansible_distribution|lower)
 
+    - name: "set runtime distribution flag to rh-{{ ansible_distribution_major_version }}"
+      set_fact:
+        runtime_dist_flag: "rh-{{ ansible_distribution_major_version }}"
+      
     rescue:
     - fail:
         msg: "error: during check 4 rhel"

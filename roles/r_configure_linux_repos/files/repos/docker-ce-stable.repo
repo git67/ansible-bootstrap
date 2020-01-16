@@ -1,5 +1,0 @@
-[docker-ce-stable]
-name=docker-ce-stable
-baseurl="https://qdc3l7058.viola.local/repo/docker-ce-stable"
-gpgcheck=0
-

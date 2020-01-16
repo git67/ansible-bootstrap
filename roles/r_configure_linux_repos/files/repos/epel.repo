@@ -1,5 +1,0 @@
-[epel]
-name=epel
-baseurl="https://qdc3l7058.viola.local/repo/epel"
-gpgcheck=0
-

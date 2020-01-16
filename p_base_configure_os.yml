@@ -81,21 +81,21 @@
       tags:
       - deploy_ca
 
-    - name: "role configure repos"
+    - name: "role configure repos {{ runtime_dist_flag }}"
       include_role:
-        name: r_configure_linux_repos
+        name: r_configure_linux_repos.{{ runtime_dist_flag }}
       tags: 
       - configure_linux_repos
 
-    - name: "role configure yum-cron"
+    - name: "role configure yum-cron {{ runtime_dist_flag }}"
       include_role:
-        name: r_configure_yum_cron
+        name: r_configure_yum_cron.{{ runtime_dist_flag }}
       tags: 
       - configure_yum_cron
 
-    - name: "role update all"
+    - name: "role update all {{ runtime_dist_flag }}"
       include_role:
-        name: r_update_all
+        name: r_update_all.{{ runtime_dist_flag }}
       tags: 
       - update_all
 
