@@ -79,11 +79,11 @@
       tags: 
       - configure_linux_repos
 
-    - name: "role configure yum-cron {{ runtime_dist_flag }}"
+    - name: "role configure auto update{{ runtime_dist_flag }}"
       include_role:
-        name: r_configure_yum_cron.{{ runtime_dist_flag }}
+        name: r_configure_auto_update.{{ runtime_dist_flag }}
       tags: 
-      - configure_yum_cron
+      - configure_auto_update
 
     - name: "role update all {{ runtime_dist_flag }}"
       include_role:

@@ -1,0 +1,31 @@
+################################################
+# name: r_update_all
+#
+# function:
+# - update all rpm's from configured repos
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+#
+# ref:
+# - %
+#
+# changelog:
+# -
+#################################################
+---
+# tasks file for r_update_all
+  - block:
+    - name: "update all packages"
+      yum:
+        name: "*"
+        state: latest
+
+    rescue:
+    - fail:
+        msg: "error: update all rpm's from configured repos"
+
+    tags:
+    - update_all

@@ -19,13 +19,13 @@
 # tasks file for r_check_availability
 # ping all nodes
   - block:
-    - name: "check availibility {{ ansible_play_hosts | to_nice_yaml }}"
+    - name: "check availibility {{ ansible_play_hosts | to_yaml }}"
       wait_for_connection:
       delay: 10
 
     rescue:
     - fail:
-        msg: "error: during check availibility {{ ansible_play_hosts | to_nice_yaml }}"
+        msg: "error: during check availibility {{ ansible_play_hosts | to_yaml }}"
 
     tags:
     - always
