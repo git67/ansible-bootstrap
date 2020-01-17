@@ -9,14 +9,16 @@
 # dev: heiko stein
 # mail: heiko.stein@etomer.com
 #
-# rel: 0.1
+# rel: 0.2
 #
 # ref:
 # - files/gpg/*
 # - files/repos/*
+# - ../group_vars/all
 #
 # changelog:
-# -
+# - var 'repo_list' for selectiv install of rpm-repos
+# - simple case sensitive patternmatching
 #################################################
 ---
 # tasks file for r_configure_linux_repos
@@ -37,6 +39,7 @@
         backup: yes
       with_fileglob:
         - "files/gpg/*"
+      no_log: yes
 
     - name: "list available yum repositories"
       find:
@@ -49,19 +52,34 @@
         path: "{{ item.path }}"
         state: absent
       loop: "{{ repos['files'] | flatten(levels=1) }}"
-      no_log: yes
+
+    - name: "build list of repo-files by pattern: {{ repo_pattern }}"
+      local_action:
+        module: find
+        paths: "./roles/{{ role_name }}/files/repos"
+        patterns: "{{ repo_pattern }}"
+      register: repos_by_pattern
+
+    #- debug:
+    #    msg: "{{ item.path }}"
+    #  loop: "{{ repos_by_pattern['files'] | flatten(levels=1) }}"
+
+    #- debug:
+    #    msg: "{{ role_name }}"
 
     - name: "copy repos to /etc/yum.repos.d/"
       copy:
-        dest: "/etc/yum.repos.d"
-        src: "{{ item }}"
+        dest: "/etc/yum.repos.d/"
+        #src: "{{ item }}"
+        src: "{{ item.path }}"
         group: "root"
         owner: "root"
         mode: 0644
         backup: yes
         force: yes
-      with_fileglob:
-        - "files/repos/*repo"
+      loop: "{{ repos_by_pattern['files'] | flatten(levels=1) }}"
+    #with_fileglob:
+    #    - "files/repos/*repo"
 
     - name: "cleanup yum environment"
       command: yum clean all
