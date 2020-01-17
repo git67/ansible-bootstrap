@@ -19,7 +19,7 @@
 # tasks file for r_update_all
   - block:
     - name: "update all packages"
-      yum:
+      dnf:
         name: "*"
         state: latest
 
