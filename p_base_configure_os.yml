@@ -2,7 +2,14 @@
 # name: p_base_configure_os.yml
 #
 # function: 
+# - create admin user
 # - configure dns
+# - configure ntp
+# - deploy ca's
+# - configure rpm-repo's
+# - configure yum-cron
+# - update os
+# - probe systemd services 
 #
 # dev: heiko stein
 # mail: heiko.stein@etomer.com
@@ -79,11 +86,11 @@
       tags: 
       - configure_linux_repos
 
-    - name: "role configure auto update{{ runtime_dist_flag }}"
+    - name: "role configure yum-cron {{ runtime_dist_flag }}"
       include_role:
-        name: r_configure_auto_update.{{ runtime_dist_flag }}
+        name: r_configure_yum_cron.{{ runtime_dist_flag }}
       tags: 
-      - configure_auto_update
+      - configure_yum_cron
 
     - name: "role update all {{ runtime_dist_flag }}"
       include_role:

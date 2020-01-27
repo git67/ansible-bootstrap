@@ -1,0 +1,31 @@
+#################################################
+# name: r_configure_selinux
+#
+# function:
+# - configure selinux -> enforced
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+#
+# ref:
+# - vars/main.yml
+#
+# changelog:
+# -
+#################################################
+---
+# tasks file for r_configure_selinux
+  - block:
+    - name: "configure selinux - set state: {{ selinux.state }}"
+      selinux:
+        policy: "{{ selinux.policy }}"
+        state: "{{ selinux.state }}"
+
+    rescue:
+    - fail:
+        msg: "error: configure selinux"
+
+    tags:
+    - configure_selinux
