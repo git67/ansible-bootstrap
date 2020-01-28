@@ -22,7 +22,7 @@
         path: "/etc/ansible/facts.d/state.fact"
         section: state  
         option: last_deploy
-        value: "{{ lookup('pipe','date +%H:%M:%S-%d.%m.%Y') }}"
+        value: "{{ lookup('pipe','date +%H:%M:%S-%d.%m.%Y') }}-{{ pl_name }}"
         state: present
         backup: yes
 
