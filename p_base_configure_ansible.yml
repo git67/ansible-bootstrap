@@ -1,19 +1,4 @@
 ################################################
-# name: p_base_configure_ansible.yml
-#
-# function: 
-# - create ansible user
-# - put ssh key in place
-# - create sudo role
-#
-# dev: heiko stein
-# mail: heiko.stein@etomer.com
-#
-# rel: 0.1
-# changelog:
-# -
-################################################
-
 ---
 - name: "configure ansible client at {{ ansible_play_hosts | to_yaml }}"
   hosts: "{{ group_name | default('all') }}"

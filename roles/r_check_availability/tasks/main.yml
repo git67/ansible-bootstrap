@@ -1,23 +1,5 @@
-###############################################
-## name: for r_check_availability
-##
-## function:
-## - timed ansible ping to all hosts, given by inventory-group
-##
-## dev: heiko stein
-## mail: heiko.stein@etomer.com
-##
-## rel: 0.1
-##
-## ref:
-## - %
-##
-## changelog:
-## -
-#################################################
 ---
 # tasks file for r_check_availability
-# ping all nodes
   - block:
     - name: "check availibility {{ ansible_play_hosts | to_yaml }}"
       wait_for_connection:
