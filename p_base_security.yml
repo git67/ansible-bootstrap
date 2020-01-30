@@ -34,7 +34,7 @@
 ################################################
   tasks:
   - block:
-    - name: "role configure firewall {{ runtime_dist_flag }}"
+    - name: "role configure firewall"
       include_role:
         name: r_configure_firewall.{{ runtime_dist_flag }}
       tags: 
@@ -51,6 +51,14 @@
         name: r_configure_sysctl
       tags: 
       - configure_sysctl
+
+    - name: "role hardening"
+      include_role:
+        name: r_hardening.{{ runtime_dist_flag }}
+      tags:
+      - hardening_cron
+      - password_policies
+
 
     rescue:
     - fail:
