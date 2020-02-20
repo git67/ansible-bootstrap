@@ -8,3 +8,6 @@ runtime_dist_flag: "rh-7"
 # "centos.repo" -> explicit name
 # on cli: ... -e repo_patter="*"
 repo_pattern: "*"
+#
+#
+bybass_failed_service: "yes"

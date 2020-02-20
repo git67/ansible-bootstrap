@@ -9,7 +9,7 @@
         SVC={{ hostvars[inventory_hostname]['services'][item]['name'] }}
         systemctl is-failed ${SVC}
       loop: "{{ hostvars[inventory_hostname]['services'] | flatten(levels=1) }}"
-      failed_when: is_failed.stdout == "failed"
+      failed_when: is_failed.stdout == "failed" and bybass_failed_service == "no"
       changed_when: false
       register: is_failed
 
