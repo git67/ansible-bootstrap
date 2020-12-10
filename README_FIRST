@@ -1,0 +1,4 @@
+- first steps
+# vi inventory/hosts
+# source .env
+# _ra p_configure_ansible.yml
