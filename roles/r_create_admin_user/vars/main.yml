@@ -12,15 +12,4 @@ admin_user:
     sudo_entry: "admin ALL=(ALL) NOPASSWD: ALL"
     pub_key_file: "admin.pub.vault"
     password_file: "admin.pw.vault"
-  admin1:
-    name: admin1
-    home_dir: /home/admin1
-    group: users
-    comment: "administrativer user"
-    uid: 61004
-    gid: 100
-    sudo_file: admin1
-    sudo_entry: "admin1 ALL=(ALL) NOPASSWD: ALL"
-    pub_key_file: "admin1.pub.vault"
-    password_file: "admin1.pw.vault"
 noop:
