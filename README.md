@@ -1,6 +1,7 @@
 ## ansible-bootstrap
 
-#### create your inventory
+#### create/update your inventory file
+###### (look into ansible.cfg for reference to this file)
 ```
 vi inventory/hosts
 ```
