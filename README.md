@@ -12,7 +12,7 @@ alias
 ```
 
 #### create ansible environment at managed nodes 
-#### (keep in mind, you have to know the initial root password of your managed nodes)
+###### (keep in mind, you have to know the initial root password of your managed nodes)
 ```
 _ri p_base_configure_ansible.yml
 ```
