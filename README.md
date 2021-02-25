@@ -1,8 +1,7 @@
 # ansible-bootstrap
 
-### first steps
-### create your inventory
-vi inventory/hosts
+#### create your inventory
+\# vi inventory/hosts
 
 - source environment
 source .env
