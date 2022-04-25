@@ -19,11 +19,11 @@
 
     - name: "role check node os"
       ansible.builtin.include_role:
-        name: linux.bootstrap.r_check_os
+        name: r_check_os
 
     - name: "role create local facts"
       ansible.builtin.include_role:
-        name: linux.bootstrap.r_create_local_facts
+        name: r_create_local_facts
 
     rescue:
     - ansible.builtin.fail:
