@@ -1,7 +1,7 @@
 ################################################
 ---
-- name: "configure os at {{ ansible_play_hosts | to_yaml }}"
-  hosts: "{{ group_name | default('all') }}"
+- name: "configure os at_{{ ansible_play_hosts | to_yaml }}"
+  hosts: _{{ group_name | default('all') }}"
   collections:
     - linux.bootstrap
   gather_facts: no
@@ -27,7 +27,7 @@
 
     rescue:
     - fail:
-        msg: "pre tasks {{ pl_name }} failed"
+        msg: "pre tasks_{{ pl_name }} failed"
 
     tags:
     - always
@@ -62,19 +62,19 @@
 
     - name: "role configure repos"
       ansible.builtin.include_role:
-        name: r_configure_linux_repos.{{ runtime_dist_flag }}
+        name: r_configure_linux_repos_{{ runtime_dist_flag }}
       tags: 
       - configure_linux_repos
 
     - name: "role configure auto update"
       ansible.builtin.include_role:
-        name: r_configure_auto_update.{{ runtime_dist_flag }}
+        name: r_configure_auto_update_{{ runtime_dist_flag }}
       tags: 
       - configure_auto_update
 
     - name: "role update all"
       ansible.builtin.include_role:
-        name: r_update_all.{{ runtime_dist_flag }}
+        name: r_update_all_{{ runtime_dist_flag }}
       tags: 
       - update_all
 
@@ -98,7 +98,7 @@
 
     rescue:
     - ansible.builtin.fail:
-        msg: "tasks {{ pl_name }} failed"
+        msg: "tasks_{{ pl_name }} failed"
 
 ################################################
   post_tasks:
@@ -111,4 +111,4 @@
 
     rescue:
     - ansible.builtin.fail:
-        msg: "post tasks {{ pl_name }} failed"
+        msg: "post tasks_{{ pl_name }} failed"

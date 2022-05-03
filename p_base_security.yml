@@ -1,7 +1,7 @@
 ################################################
 ---
-- name: "configure security stuff at {{ ansible_play_hosts | to_yaml }}"
-  hosts: "{{ group_name | default('all') }}"
+- name: "configure security stuff at_{{ ansible_play_hosts | to_yaml }}"
+  hosts: _{{ group_name | default('all') }}"
   gather_facts: no
   any_errors_fatal: true
   become: yes
@@ -25,7 +25,7 @@
 
     rescue:
     - fail:
-        msg: "pre tasks {{ pl_name }} failed"
+        msg: "pre tasks_{{ pl_name }} failed"
 
     tags:
     - always
@@ -36,7 +36,7 @@
   - block:
     - name: "role configure firewall"
       include_role:
-        name: r_configure_firewall.{{ runtime_dist_flag }}
+        name: r_configure_firewall_{{ runtime_dist_flag }}
       tags: 
       - configure_firewall
 
@@ -54,7 +54,7 @@
 
     - name: "role hardening"
       include_role:
-        name: r_hardening.{{ runtime_dist_flag }}
+        name: r_hardening_{{ runtime_dist_flag }}
       tags:
       - hardening_cron
       - password_policies
@@ -62,7 +62,7 @@
 
     rescue:
     - fail:
-        msg: "tasks {{ pl_name }} failed"
+        msg: "tasks_{{ pl_name }} failed"
 
 ################################################
   post_tasks:
@@ -75,4 +75,4 @@
 
     rescue:
     - fail:
-        msg: "post tasks {{ pl_name }} failed"
+        msg: "post tasks_{{ pl_name }} failed"
